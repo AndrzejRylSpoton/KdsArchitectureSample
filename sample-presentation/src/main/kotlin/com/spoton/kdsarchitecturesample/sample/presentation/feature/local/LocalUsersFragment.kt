@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.spoton.kdsarchitecturesample.common.ui.presenter.toast.ToastPresenter
 import com.spoton.kdsarchitecturesample.common.util.delegates.lazyViewLifecycle
 import com.spoton.kdsarchitecturesample.sample.presentation.R
 import com.spoton.kdsarchitecturesample.sample.presentation.common.adapter.UserAdapter
@@ -20,6 +20,7 @@ import com.spoton.kdsarchitecturesample.sample.presentation.feature.local.router
 import com.spoton.kdsarchitecturesample.sample.presentation.feature.local.viewmodel.LocalUsersViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LocalUsersFragment : Fragment(R.layout.fragment_local_users) {
@@ -33,6 +34,9 @@ class LocalUsersFragment : Fragment(R.layout.fragment_local_users) {
             adapter = adapter,
         )
     }
+
+    @Inject
+    lateinit var toastPresenter: ToastPresenter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -67,10 +71,8 @@ class LocalUsersFragment : Fragment(R.layout.fragment_local_users) {
     private fun onEffect(effect: LocalUsersEffect) {
         when (effect) {
             is LocalUsersEffect.NavigateBack -> router.navigateUp()
-            is LocalUsersEffect.ShowUserId -> {
-                // todo presenter
-                Toast.makeText(requireContext(), effect.userId, Toast.LENGTH_LONG).show()
-            }
+            is LocalUsersEffect.ShowUserId ->
+                toastPresenter.showToast(message = effect.userId)
         }
     }
 
