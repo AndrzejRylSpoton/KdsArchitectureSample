@@ -35,7 +35,7 @@ internal class MainViewModel @Inject constructor(
 
     fun onNetworkUsersClicked() {
         launchInMain {
-            _effect.send(MainEffect.NavigateToDatabaseUsers)
+            _effect.send(MainEffect.NavigateToNetworkUsers)
         }
     }
 }

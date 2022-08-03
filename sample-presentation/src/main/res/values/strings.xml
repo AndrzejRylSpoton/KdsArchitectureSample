@@ -2,4 +2,6 @@
 <resources>
     <string name="database_source_button">Database users (%d)</string>
     <string name="network_source_button">Network users</string>
+    <string name="local_users_header">Database users</string>
+    <string name="network_users_header">Network users</string>
 </resources>
