@@ -1,0 +1,90 @@
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion Versions.compileSdk
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        // Sets Java compatibility to Java 11
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+
+        freeCompilerArgs += [
+                "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                "-Xuse-experimental=kotlinx.coroutines.FlowPreview",
+                "-Xuse-experimental=kotlin.time.ExperimentalTime",
+                "-Xuse-experimental=kotlin.ExperimentalStdlibApi",
+                "-Xuse-experimental=androidx.compose.animation.ExperimentalAnimationApi",
+                "-Xuse-experimental=androidx.compose.material.ExperimentalMaterialApi",
+        ]
+    }
+
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+        animationsDisabled = true
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE.md'
+        exclude 'META-INF/LICENSE-notice.md'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
+        exclude("META-INF/*.kotlin_module")
+    }
+
+    sourceSets.all { sourceSet ->
+        sourceSet.java.srcDirs += "src/${sourceSet.getName()}/kotlin"
+    }
+
+    dependencies {
+        implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+
+        //coroutines
+        implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+        androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+
+        //junit
+        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${Versions.junit5}"
+        testImplementation "org.junit.jupiter:junit-jupiter-params:${Versions.junit5}"
+        testImplementation "androidx.test:core:${Versions.runner}"
+
+        //junit instrumented
+        androidTestImplementation "androidx.test:core:${Versions.runner}"
+        androidTestImplementation "androidx.test:runner:${Versions.runner}"
+        androidTestImplementation "androidx.test:rules:${Versions.runner}"
+        androidTestImplementation "androidx.test.ext:junit:${Versions.androidJunit}"
+        androidTestUtil "androidx.test:orchestrator:${Versions.orchestrator}"
+        androidTestImplementation "androidx.arch.core:core-testing:${Versions.archCoreTesting}"
+
+        //logging
+        implementation "com.jakewharton.timber:timber:${Versions.timber}"
+    }
+}
