@@ -1,0 +1,16 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/shared.gradle"
+apply plugin: "kotlin-parcelize"
+apply plugin: 'kotlin-kapt'
+
+android {
+    defaultConfig {
+        consumerProguardFiles 'proguard-rules.pro'
+    }
+}
+
+dependencies {
+    //Dependency Injection
+    implementation "com.google.dagger:hilt-android:${Versions.hilt}"
+    kapt "com.google.dagger:hilt-compiler:${Versions.hilt}"
+}

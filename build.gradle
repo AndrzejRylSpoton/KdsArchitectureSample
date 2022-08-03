@@ -10,6 +10,7 @@ buildscript {
         classpath Classpaths.navigation
         classpath Classpaths.junit
         classpath Classpaths.hilt
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30'
     }
 }
 

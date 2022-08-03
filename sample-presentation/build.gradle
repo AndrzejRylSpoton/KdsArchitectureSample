@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/shared.gradle"
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+android {
+    defaultConfig {
+        consumerProguardFiles 'proguard-rules.pro'
+    }
+}
+
+dependencies {
+    implementation project(":sample-domain")
+
+    //UI
+    implementation "androidx.appcompat:appcompat:${Versions.appcompat}"
+    implementation "androidx.core:core-ktx:${Versions.coreKtx}"
+    implementation "androidx.fragment:fragment:${Versions.fragment}"
+    implementation "androidx.fragment:fragment-ktx:${Versions.fragment}"
+    implementation "androidx.activity:activity:${Versions.activity}"
+    implementation "androidx.activity:activity-ktx:${Versions.activity}"
+    implementation "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    implementation "com.google.android.material:material:${Versions.materialComponents}"
+
+    //Dependency Injection
+    implementation "com.google.dagger:hilt-android:${Versions.hilt}"
+    kapt "com.google.dagger:hilt-compiler:${Versions.hilt}"
+
+    //Lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleExtensions}"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+
+    //Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+}

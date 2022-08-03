@@ -11,7 +11,7 @@ object Versions {
     const val kotlin = "1.6.21"
     const val gradle = "7.1.3"
     const val junitPlugin = "1.8.2.0"
-    const val lifecycle = "2.5.0"
+    const val lifecycle = "2.5.1"
     const val lifecycleExtensions = "2.2.0"
     const val room = "2.4.2"
     const val materialComponents = "1.6.1"
@@ -19,9 +19,9 @@ object Versions {
     const val appcompat = "1.4.2"
     const val junit5 = "5.8.2"
     const val coroutines = "1.6.1"
-    const val navigation = "2.5.0"
-    const val fragment = "1.5.0"
-    const val activity = "1.5.0"
+    const val navigation = "2.5.1"
+    const val fragment = "1.5.1"
+    const val activity = "1.5.1"
     const val timber = "5.0.1"
     const val archCoreTesting = "2.1.0"
     const val mockitoKotlin = "4.0.0"
@@ -29,6 +29,11 @@ object Versions {
     const val orchestrator = "1.4.1"
     const val androidJunit = "1.1.3"
     const val hilt = "2.41"
+    const val moshi = "1.13.0"
+    const val gson = "2.9.0"
+    const val retrofit = "2.9.0"
+    const val okHttp = "4.9.3"
+    const val coreKtx = "1.8.0"
 }
 
 object Classpaths {
