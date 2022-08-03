@@ -6,6 +6,21 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.spoton.kdsarchitecturesample.sample.presentation.feature.main.MainFragment" />
+        android:name="com.spoton.kdsarchitecturesample.sample.presentation.feature.main.MainFragment">
 
+        <action
+            android:id="@+id/navigateToLocalUsers"
+            app:destination="@id/localUsersFragment" />
+        <action
+            android:id="@+id/navigateToNetworkUsers"
+            app:destination="@id/networkUsersFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/localUsersFragment"
+        android:name="com.spoton.kdsarchitecturesample.sample.presentation.feature.local.LocalUsersFragment" />
+
+    <fragment
+        android:id="@+id/networkUsersFragment"
+        android:name="com.spoton.kdsarchitecturesample.sample.presentation.feature.network.NetworkUsersFragment" />
 </navigation>

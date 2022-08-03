@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply from: "$rootDir/shared.gradle"
 apply plugin: "kotlin-parcelize"
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     defaultConfig {
@@ -13,6 +15,12 @@ android {
 }
 
 dependencies {
+
+    //Dependency Injection
+    implementation "com.google.dagger:hilt-android:${Versions.hilt}"
+    kapt "com.google.dagger:hilt-compiler:${Versions.hilt}"
+
+    //UI
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
     implementation "androidx.activity:activity-ktx:${Versions.activity}"
     implementation "androidx.fragment:fragment-ktx:${Versions.fragment}"

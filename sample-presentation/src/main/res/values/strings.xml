@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="database_source_button">Database users (%d)</string>
+    <string name="network_source_button">Network users</string>
+</resources>
