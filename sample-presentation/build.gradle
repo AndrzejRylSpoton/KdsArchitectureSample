@@ -12,6 +12,7 @@ android {
 
 dependencies {
     implementation project(":sample-domain")
+    implementation project(":common")
 
     //UI
     implementation "androidx.appcompat:appcompat:${Versions.appcompat}"

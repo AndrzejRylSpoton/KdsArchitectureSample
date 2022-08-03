@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply from: "$rootDir/shared.gradle"
+apply plugin: "kotlin-parcelize"
+
+android {
+    defaultConfig {
+        consumerProguardFiles 'proguard-rules.pro'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+    implementation "androidx.activity:activity-ktx:${Versions.activity}"
+    implementation "androidx.fragment:fragment-ktx:${Versions.fragment}"
+
+    //Lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleExtensions}"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+
+    //Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    implementation "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+}

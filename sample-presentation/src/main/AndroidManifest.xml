@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.spoton.sample.presentation">
+    package="com.spoton.kdsarchitecturesample.sample.presentation">
 
+    <application android:theme="@style/Theme.KdsArchitectureSample">
+        <activity
+            android:name="com.spoton.kdsarchitecturesample.sample.presentation.SampleActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.spoton.sample.START_SAMPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
 </manifest>

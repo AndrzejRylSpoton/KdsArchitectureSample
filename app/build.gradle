@@ -14,9 +14,13 @@ android {
 
 dependencies {
     //Sample
+    implementation project(":common")
     implementation project(":sample-data")
     implementation project(":sample-domain")
     implementation project(":sample-presentation")
+
+    //UI
+    implementation "androidx.appcompat:appcompat:${Versions.appcompat}"
 
     //Dependency Injection
     implementation "com.google.dagger:hilt-android:${Versions.hilt}"
