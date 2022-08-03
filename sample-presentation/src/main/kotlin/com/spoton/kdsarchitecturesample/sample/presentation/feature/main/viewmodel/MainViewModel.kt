@@ -1,7 +1,9 @@
 package com.spoton.kdsarchitecturesample.sample.presentation.feature.main.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.spoton.kdsarchitecturesample.common.util.dispatcher.launchInBackground
 import com.spoton.kdsarchitecturesample.common.util.dispatcher.launchInMain
+import com.spoton.kdsarchitecturesample.sample.domain.interactor.GetLocalUsersCountInteractor
 import com.spoton.kdsarchitecturesample.sample.presentation.feature.main.mapper.MainMapper
 import com.spoton.kdsarchitecturesample.sample.presentation.feature.main.model.MainEffect
 import com.spoton.kdsarchitecturesample.sample.presentation.feature.main.model.MainState
@@ -18,6 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 internal class MainViewModel @Inject constructor(
     private val mapper: MainMapper,
+    private val getLocalUsersCountInteractor: GetLocalUsersCountInteractor,
 ) : ViewModel() {
 
     private val state = MutableStateFlow(MainState())
@@ -26,6 +29,20 @@ internal class MainViewModel @Inject constructor(
 
     private val _effect = Channel<MainEffect>()
     val effect: Flow<MainEffect> = _effect.receiveAsFlow()
+
+    init {
+        launchInBackground {
+            getLocalUsersCountInteractor.run()
+                .onSuccess {
+                    state.value = currentState.copy(
+                        databaseUsersCount = it,
+                    )
+                }
+                .onFailure {
+                    // todo error snackbar
+                }
+        }
+    }
 
     fun onDatabaseUsersClicked() {
         launchInMain {
