@@ -1,0 +1,13 @@
+*.iml
+.gradle
+.idea/*
+!.idea/codeStyles
+.idea/codeStyles/*
+!.idea/codeStyles/Project.xml
+!.idea/file.template.settings.xml
+app/src/main/kotlin/.idea
+build
+/local.properties
+detekt/output.xml
+**/assets/credentials.txt
+
