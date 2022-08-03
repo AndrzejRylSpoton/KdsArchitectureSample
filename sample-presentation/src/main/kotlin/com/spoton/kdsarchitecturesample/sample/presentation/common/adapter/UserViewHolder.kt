@@ -13,7 +13,7 @@ class UserViewHolder(
     parent
 ) {
     override fun ItemUserBinding.bind(item: UserUIModel) {
-        itemUserUsernameTextView.text = item.name
+        itemUserUsernameTextView.text = item.displayName
         root.setOnClickListener { onUserClickedListener?.invoke(item) }
     }
 }

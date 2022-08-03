@@ -10,8 +10,8 @@ class LocalDatabase @Inject constructor() {
 
     private val users: List<User> =
         listOf(
-            User(id = "id1", firstName = "user", secondName = "1"),
-            User(id = "id2", firstName = "user", secondName = "2"),
+            User(id = "id1", name = "user1", status = "active"),
+            User(id = "id2", name = "user2", status = "inactive"),
         )
 
     fun observeUsers(): Flow<List<User>> =

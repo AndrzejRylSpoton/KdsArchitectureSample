@@ -12,7 +12,7 @@ internal class LocalUsersMapper @Inject constructor() {
             users = users.map {
                 UserUIModel(
                     id = it.id,
-                    name = "${it.firstName} ${it.secondName}"
+                    displayName = "${it.name}: ${it.status}"
                 )
             }
         )

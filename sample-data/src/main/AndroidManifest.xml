@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.spoton.kdsarchitecturesample.sample.data" />
+<manifest package="com.spoton.kdsarchitecturesample.sample.data"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+</manifest>
