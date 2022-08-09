@@ -12,6 +12,7 @@ import com.spoton.kdsarchitecturesample.common.ui.presenter.toast.ToastPresenter
 import com.spoton.kdsarchitecturesample.common.util.delegates.lazyViewLifecycle
 import com.spoton.kdsarchitecturesample.sample.presentation.R
 import com.spoton.kdsarchitecturesample.sample.presentation.common.adapter.UserAdapter
+import com.spoton.kdsarchitecturesample.sample.presentation.common.utils.collectLifecycleAware
 import com.spoton.kdsarchitecturesample.sample.presentation.databinding.FragmentNetworkUsersBinding
 import com.spoton.kdsarchitecturesample.sample.presentation.feature.local.router.LocalUsersRouter
 import com.spoton.kdsarchitecturesample.sample.presentation.feature.local.router.LocalUsersRouterImpl
@@ -59,12 +60,8 @@ class NetworkUsersFragment : Fragment(R.layout.fragment_network_users) {
 
     private fun setupObservers() {
         with(viewModel) {
-            lifecycleScope.launch {
-                viewState.collect(binder::bind)
-            }
-            lifecycleScope.launch {
-                effect.collect(::onEffect)
-            }
+            viewState.collectLifecycleAware(viewLifecycleOwner, binder::bind)
+            effect.collectLifecycleAware(viewLifecycleOwner, ::onEffect)
         }
     }
 

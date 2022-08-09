@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.spoton.kdsarchitecturesample.common.util.delegates.lazyViewLifecycle
 import com.spoton.kdsarchitecturesample.sample.presentation.R
+import com.spoton.kdsarchitecturesample.sample.presentation.common.utils.collectLifecycleAware
 import com.spoton.kdsarchitecturesample.sample.presentation.databinding.FragmentMainBinding
 import com.spoton.kdsarchitecturesample.sample.presentation.feature.main.binder.MainBinder
 import com.spoton.kdsarchitecturesample.sample.presentation.feature.main.model.MainEffect
@@ -52,12 +53,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun setupObservers() {
         with(viewModel) {
-            lifecycleScope.launch {
-                viewState.collect(binder::bind)
-            }
-            lifecycleScope.launch {
-                effect.collect(::onEffect)
-            }
+            viewState.collectLifecycleAware(viewLifecycleOwner, binder::bind)
+            effect.collectLifecycleAware(viewLifecycleOwner, ::onEffect)
         }
     }
 
